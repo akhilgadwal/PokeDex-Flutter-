@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:pokedex/widget/pokemon_grid.dart';
 
 import '../services/api_call.dart';
 
@@ -30,18 +31,7 @@ class MyHomePage extends ConsumerWidget {
         children: [
           suggestion.when(data: (data) {
             final List pokemonList = data['pokemon'] as List;
-            return Expanded(
-              child: ListView.builder(
-                itemCount: pokemonList.length,
-                itemBuilder: (context, index) {
-                  final pokemon = pokemonList[index];
-                  return ListTile(
-                    trailing: Text(pokemon['id'].toString()),
-                    title: Text(pokemon['name']),
-                  );
-                },
-              ),
-            );
+            return CustomGridView(pokemonList);
           }, error: (error, _) {
             return Center(
               child: Text(error.toString()),
