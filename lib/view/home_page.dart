@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pokedex/provider/provider.dart';
 import 'package:pokedex/view/fav.dart';
+import 'package:pokedex/view/local_data.dart';
 import 'package:pokedex/widget/pokemon_grid.dart';
 
 import '../services/api_call.dart';
@@ -61,6 +62,14 @@ class MyHomePage extends ConsumerWidget {
           )
         ],
       ),
+      floatingActionButton: FloatingActionButton(onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) =>  DataRetrievalScreen(),
+          ),
+        );
+      }),
       body: Column(
         children: [
           suggestion.when(data: (data) {

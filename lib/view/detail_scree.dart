@@ -26,9 +26,9 @@ class DetailScreen extends ConsumerWidget {
             const SizedBox(height: 20),
             Text('Weaknesses: ${pokemonDetails['weaknesses']}'),
             const SizedBox(height: 10),
-            Text('Eggs: ${pokemonDetails['eggs']}'),
+            Text('Eggs: ${pokemonDetails['egg']}'),
             const SizedBox(height: 10),
-            Text('Spawn Type: ${pokemonDetails['spawn_type']}'),
+            Text('Spawn Type: ${pokemonDetails['spawn_time']}'),
             // Add other attributes as needed
           ],
         ),

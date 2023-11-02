@@ -20,11 +20,13 @@ class CustomGridView extends ConsumerWidget {
         itemBuilder: (context, index) {
           final pokemon = pokemonList[index];
           final type = pokemonList[index]['type'];
-          bool isFavorite =
-              ref.watch(favoritePokemonProvider).contains(pokemon);
+          bool isFavorite = ref
+              .watch(favoritePokemonProvider)
+              .any((element) => element.containsKey(pokemon));
+          print(isFavorite);
           return GestureDetector(
-            onTap: (){
-               Navigator.push(
+            onTap: () {
+              Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => DetailScreen(pokemonDetails: pokemon),
@@ -52,17 +54,19 @@ class CustomGridView extends ConsumerWidget {
                                                 : type[0] == "Fighting"
                                                     ? Colors.orange
                                                     : type[0] == "Bug"
-                                                        ? Colors.lightGreenAccent
+                                                        ? Colors
+                                                            .lightGreenAccent
                                                         : type[0] == "Ghost"
                                                             ? Colors.deepPurple
-                                                            : type[0] == "Normal"
+                                                            : type[0] ==
+                                                                    "Normal"
                                                                 ? Colors.black26
                                                                 : Colors.pink,
                 borderRadius: const BorderRadius.all(
                   Radius.circular(25),
                 ),
               ),
-          
+
               // You can use any widget instead of Card to display your content
               child: Stack(
                 children: <Widget>[
