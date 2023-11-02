@@ -12,10 +12,12 @@ class ApiService {
   final String baseUrl =
       'https://raw.githubusercontent.com/Biuni/PokemonGO-Pokedex/master/pokedex.json';
 
-  Future<dynamic> getPokemonData() async {
+  Future<Map<String,dynamic>> getPokemonData() async {
+    
     try {
       Response response = await _dio.get(baseUrl);
       if (response.statusCode == 200) {
+        print(response.data);
      return jsonDecode(response.data);
         // Handle the retrieved data as needed
        
